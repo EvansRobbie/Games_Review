@@ -3,9 +3,15 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   :root{
-    --primary: #2F4858
-    --seconndary: #D65C50
-    --info: #BF5071
+    --primary: #2F4858;
+    --secondary: #D65C50;
+    --info: #BF5071;
+    @apply bg-primary text-info
   }
 }
