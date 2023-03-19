@@ -4,7 +4,9 @@ import { motion } from 'framer-motion'
 const Hero = () => {
     const { data } = useGameContext()
     const [videoError, setVideoError] = useState(false)
+    // from the data get a random game
         const game = data && data[Math.floor(Math.random() * data.length)]
+        // create a video playback by replacing the image url thumbnail from having a thumbnail.jpg to having videoplayback.webm at the end
         const videoThumbnail = game?.thumbnail.replace('thumbnail.jpg','videoplayback.webm' )
         // console.log(videoThumbnail  )
         const handleError = () =>{
