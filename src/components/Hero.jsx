@@ -81,7 +81,7 @@ const Hero = () => {
                 {game?.title}
             </motion.h1>
             <motion.div 
-            className='bg-secondary w-24 h-10 cursor-pointer hover:shadow-secondary shadow-xl  rounded-xl my-4 border-2 border-slate-200 flex items-center justify-center'
+            className=''
             variants={buttonVariant}
             initial='hidden'
             animate = 'visible'
@@ -91,7 +91,7 @@ const Hero = () => {
             >
                 <motion.button 
                 whileTap= {{scale: 1.2}}
-                className=' text-slate-900 font-bold'>
+                className=''>
                     Review
                 </motion.button>
             </motion.div>

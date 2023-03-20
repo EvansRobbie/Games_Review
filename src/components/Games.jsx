@@ -20,35 +20,82 @@ const Games = () => {
             }
         }
     }
+    const ReviewButtonVariant = {
+        hidden:{
+            x:-400,
+            opacity:0
+        },
+        visible: {
+            x:0,
+            opacity:1,
+            transition:{
+                duration:0.5,
+                delay:0.2
+            }
+        }
+    }
+    const playButtonVariant = {
+        hidden:{
+            x:500,
+            opacity:0
+        },
+        visible: {
+            x:0,
+            opacity:1,
+            transition:{
+                duration:0.5,
+                delay:0.2
+            }
+        }
+    }
     const gameElement = data?.map((games, index)=>{
-        const {id, title, thumbnail, short_description: desc, release_date} = games
+        const {id, title, thumbnail, short_description: desc, game_url, release_date} = games
         const videoPlayback = thumbnail?.replace('thumbnail.jpg','videoplayback.webm')
         // console.log(videoPlayback)
         return (
             <div key = {id} 
             onMouseEnter={() => setIsHovered(true)}
              onMouseLeave={() => setIsHovered(false)}
-            className={`relative group min-w-[46vw] bg-secondary sm:min-w-[40vw] md:min-w-[30vw] lg:min-w-[23vw] xl:min-w-[20vw] min-h-[40vh] md:min-h-[50vh] border-2 border-secondary hover:shadow-secondary hover:border-slate-200 shadow-xl rounded-2xl overflow-hidden border-slate-200 duration-500 ease-in ${index === 0 ? "col-span-1 row-span-3" : "col-span-1 row-span-4"}`}>
+            className={`relative group min-w-[46vw] bg-secondary sm:min-w-[40vw] md:min-w-[30vw] lg:min-w-[23vw] xl:min-w-[20vw] min-h-[40vh] md:min-h-[50vh] border-2 border-[var(--secondary)] hover:shadow-secondary hover:border-slate-200 shadow-xl rounded-2xl overflow-hidden border-slate-200 duration-500 ease-in ${index === 0 ? "col-span-1 row-span-3" : "col-span-1 row-span-4"}`}>
                 <div className='w-full h-full relative'>
                     <img className='w-full h-full object-cover' src={thumbnail} alt="" />
                     
                     {thumbnail && isHovered && <div className='absolute top-0 left-0  w-full h-full opacity-0 group-hover:opacity-100 group-hover:z-20'>
                     <LazyLoad once={true} height={'100%'}>
 
-                   <video className='w-full h-full object-cover' src={videoPlayback} autoPlay={true} loop={true} muted={true} />
+                   <video className='w-full h-full object-cover brightness-50' src={videoPlayback} autoPlay={true} loop={true} muted={true} />
                    </LazyLoad>
                     </div>}
                    
                 </div>
                 <motion.div 
                 
-                    className='absolute left-0 -bottom-32 group-hover:cursor-pointer bg-gradient-to-t from-secondary opacity-0 group-hover:opacity-100 group-hover:z-20  w-full h-full px-4 py-3'>
+                    className='absolute left-0 -bottom-20 md:-bottom-32 group-hover:cursor-pointer bg-gradient-to-t from-[var(--info)] opacity-0 group-hover:opacity-100 group-hover:z-20  w-full h-full px-4 py-3'>
+                        <h1 className='font-bold uppercase drop-shadow-xl shadow-cyan-300 text-base md:text-lg '>{title}</h1>
                         <motion.p 
                      variants={paragraphAnimation}
                      initial= 'hidden'
                      animate={isHovered ? "visible" : "hidden"}
                      transition={{delay:2.0}}
-                    className='text-slate-200 text-sm md:text-base font-medium'>{desc}</motion.p>
+                    className='text-slate-200 text-sm md:text-base font-medium'>
+                        {desc}
+                    </motion.p>
+                  <p className='font-medium text-sm'>Release Date: <span className='text-slate-200'>{release_date}</span></p>
+                    <div className='flex w-full justify-between my-2 gap-2 '>
+                        <motion.button
+                        variants={ReviewButtonVariant}
+                        initial='hidden'
+                        animate='visible'
+                        whileTap={{scale:1.1}}
+                         className=' hover:border-r-8 hover:border-l-8 duration-500 ease-in border-t-0 border-b-0  bg-gradient-to-tr from-secondary to-[var(--info)]'>Review</motion.button>
+                        <motion.button
+                        variants={playButtonVariant}
+                        initial='hidden'
+                        animate='visible'
+                        whileTap={{scale:1.1}}
+                        className='bg-transparent text-secondary border border-primary hover:border-secondary hover:border-r-8 hover:border-l-8 hover:text-primary duration-500 ease-in '><a href={game_url} target='_blank' >Play</a></motion.button>
+                    </div>
+
                 </motion.div>
             </div>
         )

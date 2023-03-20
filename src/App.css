@@ -9,9 +9,12 @@
     box-sizing: border-box;
   }
   :root{
-    --primary: #2F4858;
-    --secondary: #D65C50;
-    --info: #BF5071;
-    @apply bg-primary text-info
+    --primary: #1A1B29;
+    --secondary: #00C6C2;
+    --info: #FFF7D6;
+    @apply bg-primary text-secondary
+  }
+  button{
+    @apply bg-secondary w-24 h-10 text-primary font-bold cursor-pointer hover:shadow-secondary shadow-xl  rounded-xl my-4 border-2 border-slate-200 flex items-center justify-center
   }
 }
