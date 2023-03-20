@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import './App.css'
 import { QueryClientProvider, QueryClient } from 'react-query'
-import { Hero, Navbar, Games } from './components'
+ import { Hero, Navbar } from './components'
+ const LazyComponent =  lazy(() =>import('./components/Games'))
 import GamesContextProvider from './context/GamesContext'
 
 //  create an instance of our client query
@@ -13,7 +14,9 @@ function App() {
       <GamesContextProvider>
         <Navbar/>
         <Hero/>
-        <Games/>
+        <Suspense fallback={<div>Loading...</div>}>
+        <LazyComponent />
+      </Suspense>
       </GamesContextProvider>
     </QueryClientProvider>
       

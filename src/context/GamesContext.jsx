@@ -14,7 +14,8 @@ const GamesContextProvider = ({children}) => {
     };
     
     const fetchGames = async () =>{
-     const response = await Axios.get('https://free-to-play-games-database.p.rapidapi.com/api/games?category=shooter', options)
+        //  {credentials: 'omit'} is to indicate wheather a cookie is set for a cross site context
+     const response = await Axios.get('https://free-to-play-games-database.p.rapidapi.com/api/games?category=shooter', options,  {credentials: 'omit'})
     // return a promise
     return response.data
     }

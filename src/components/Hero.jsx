@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useGameContext } from '../context/GamesContext'
 import { motion } from 'framer-motion'
+import LazyLoad from 'react-lazy-load'
 const Hero = () => {
     const { data } = useGameContext()
     const [videoError, setVideoError] = useState(false)
@@ -49,8 +50,10 @@ const Hero = () => {
         
     <div className='w-full h-[85vh] relative'>
         <div className='absolute w-full h-[85vh] bg-gradient-to-r from-primary '/>
+        
         {
             !videoError ? 
+            <LazyLoad once = {true} height={'100%'}>
             <video 
                 className='w-full h-full object-cover'
                 src={videoThumbnail} 
@@ -59,7 +62,8 @@ const Hero = () => {
                 preload='auto'
                 muted={true}
                 onError= {handleError}
-            /> : 
+            />
+            </LazyLoad> : 
             <img
                 className='w-full h-full object-cover' 
                 src={game?.thumbnail} 
