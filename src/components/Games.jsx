@@ -2,11 +2,18 @@ import React, { useState } from 'react'
 import { useGameContext } from '../context/GamesContext'
 import LazyLoad from 'react-lazy-load'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
 // animate presence is responsible for detecting when items are being added or removed from the DOM
 
 const Games = () => {
     const {data} = useGameContext()
     const [isHovered, setIsHovered] = useState(false);
+    const truncate = (str, num) =>{
+        if(str?.length > num){
+            return str.slice(0, num) + '...' 
+        }
+        return str
+    }
     const paragraphAnimation ={
         hidden:{
             y:500,
@@ -71,14 +78,14 @@ const Games = () => {
                 <motion.div 
                 
                     className='absolute left-0 -bottom-20 md:-bottom-32 group-hover:cursor-pointer bg-gradient-to-t from-[var(--info)] opacity-0 group-hover:opacity-100 group-hover:z-20  w-full h-full px-4 py-3'>
-                        <h1 className='font-bold uppercase drop-shadow-xl shadow-cyan-300 text-base md:text-lg '>{title}</h1>
+                        <h1 className='font-extrabold uppercase drop-shadow-xl shadow-black text-[1.2rem] md:text-base  '>{title}</h1>
                         <motion.p 
                      variants={paragraphAnimation}
                      initial= 'hidden'
                      animate={isHovered ? "visible" : "hidden"}
                      transition={{delay:2.0}}
                     className='text-slate-200 text-sm md:text-base font-medium'>
-                        {desc}
+                        {truncate(desc, 60)}
                     </motion.p>
                   <p className='font-medium text-sm'>Release Date: <span className='text-slate-200'>{release_date}</span></p>
                     <div className='flex w-full justify-between my-2 gap-2 '>
@@ -87,7 +94,7 @@ const Games = () => {
                         initial='hidden'
                         animate='visible'
                         whileTap={{scale:1.1}}
-                         className=' hover:border-r-8 hover:border-l-8 duration-500 ease-in border-t-0 border-b-0  bg-gradient-to-tr from-secondary to-[var(--info)]'>Review</motion.button>
+                         className=' hover:border-r-8 hover:border-l-8 duration-500 ease-in border-t-0 border-b-0  bg-gradient-to-tr from-secondary to-[var(--info)]'><Link to ={`/details/${id}`}>Review</Link></motion.button>
                         <motion.button
                         variants={playButtonVariant}
                         initial='hidden'
