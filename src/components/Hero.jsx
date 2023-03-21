@@ -72,7 +72,7 @@ const Hero = () => {
          }
         <div className='absolute w-full h-full justify-center  items-start flex flex-col top-[25rem] md:top-[30rem] lg:top-[20rem] left-[50%] md:left-[30%] lg:left-[25%] xl:left-[20%] translate-x-[-50%] translate-y-[-50%] px-4 max-w-[500px]  duration-300 ease-in'>
             <motion.h1
-             className='text-4xl md:text-5xl  font-bold text-slate-200 capitalize'
+             className='text-4xl md:text-5xl font-nerko  font-bold text-slate-200 capitalize'
              variants={slideAnimation}
              initial='hidden'
              animate = 'visible'
@@ -96,7 +96,7 @@ const Hero = () => {
                 </motion.button>
             </motion.div>
             <motion.p 
-            className='font-medium text-base  md:text-lg text-slate-200/90 '
+            className='font-medium text-base font-comfortaa md:text-lg text-slate-200/90 '
             variants={paragraphVariant}
             initial='hidden'
             animate = 'visible'

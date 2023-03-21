@@ -18,7 +18,11 @@ module.exports = {
       colors: {
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
-      }
+      },
+      fontFamily: {
+        'nerko': ['Nerko One', 'sans-serif'],
+        'comfortaa': ['Comfortaa', 'cursive'],
+      },
     },
   },
   plugins: [],

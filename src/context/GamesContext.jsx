@@ -1,17 +1,12 @@
 import React, { createContext, useContext} from 'react'
 import { useQuery } from 'react-query'
 import Axios from 'axios'
+import { options } from '../API/Options'
 
 const GamesContext = createContext()
 
 const GamesContextProvider = ({children}) => {
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'd467fd09camsh430845a00feb1bdp17a9f2jsna94a59553031',
-            'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
-        }
-    };
+    
     
     const fetchGames = async () =>{
         //  {credentials: 'omit'} is to indicate wheather a cookie is set for a cross site context
