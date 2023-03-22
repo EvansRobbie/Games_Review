@@ -2,18 +2,18 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import Axios from 'axios'
-// import { options } from '../API/Options'
+import { options } from '../API/Options'
 
 
 const Details = () => {
   const {id} = useParams()
-  const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': 'd467fd09camsh430845a00feb1bdp17a9f2jsna94a59553031',
-        'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
-    }
-};
+//   const options = {
+//     method: 'GET',
+//     headers: {
+//         'X-RapidAPI-Key': 'd467fd09camsh430845a00feb1bdp17a9f2jsna94a59553031',
+//         'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
+//     }
+// };
 
   const fetchDetails = async () =>{
     

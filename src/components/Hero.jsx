@@ -91,7 +91,7 @@ const Hero = () => {
             >
                 <motion.button 
                 whileTap= {{scale: 1.2}}
-                className=''>
+                className='font-comfortaa'>
                     Review
                 </motion.button>
             </motion.div>

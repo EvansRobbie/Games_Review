@@ -34,8 +34,8 @@ const Navbar = () => {
         initial = 'hidden'
         animate= 'visible'
         className='flex items-center gap-4  h-full'>
-            <li className='font-bold text-lg cursor-pointer text-secondary'>Login</li>
-            <li className='w-28 h-10 bg-secondary flex items-center justify-center cursor-pointer rounded-xl text-slate-200 text-base font-bold'>Register</li>
+            <li className='font-bold font-comfortaa text-lg cursor-pointer text-secondary'>Login</li>
+            <li className='w-28 h-10 bg-secondary flex items-center justify-center cursor-pointer rounded-xl text-slate-200 text-base font-comfortaa font-bold'>Register</li>
         </motion.ul>
     </div>
   )
